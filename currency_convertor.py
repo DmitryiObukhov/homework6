@@ -7,7 +7,6 @@ currency_rates = {
     "EUR": 38.79,
     "GBP": 44.55, }
 
-
 print("Choose your currency.")
 while True:
     try:
