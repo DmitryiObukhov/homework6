@@ -1,32 +1,16 @@
-def convertor(amount, rates):
-    return round(amount * rates, 3)
+def convertor(amount, from_currency, to_currency):
+    if from_currency not in currency_rates:
+        raise ValueError(f"'{from_currency}' not support")
+    if to_currency not in currency_rates:
+        raise ValueError(f"'{to_currency}' not support")
+    amount_in_usd = amount / currency_rates[from_currency]
+    converted_amount = amount_in_usd * currency_rates[to_currency]
+    return round(converted_amount, 2)
 
 
 currency_rates = {
-    "USD": 36.57,
-    "EUR": 38.79,
-    "GBP": 44.55, }
-
-
-print("Choose your currency.")
-while True:
-    try:
-        choice = int(input("1 - USD, 2 - EUR, 3 - GBP : "))
-        if choice not in [1, 2, 3]:
-            raise ValueError
-    except ValueError:
-        print("Choose currency 1 - 3.")
-        continue
-
-    user_amount = int(input("Your amount: "))
-
-    if choice == 1:
-        result = convertor(user_amount, currency_rates["USD"])
-        print(f"{user_amount} USD = {result} UAH")
-    elif choice == 2:
-        result = convertor(user_amount, currency_rates["EUR"])
-        print(f"{user_amount} EUR = {result} UAH")
-    elif choice == 3:
-        result = convertor(user_amount, currency_rates["GBP"])
-        print(f"{user_amount} GBP = {result} UAH")
-    break
+    "USD": 1.0,
+    "EUR": 0.95,
+    "GBP": 0.82,
+    "UAH": 36.53,
+    "PLN": 4.23}
