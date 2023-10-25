@@ -15,5 +15,4 @@ plt.xlabel("Years 2000 - 2023")
 plt.ylabel("Rate")
 plt.bar(x_list, y1_list)
 # plt.plot(x_list, y1_list, marker='.')
-
 plt.show()
